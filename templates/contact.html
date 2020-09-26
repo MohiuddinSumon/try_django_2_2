@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>
+        Hello from the contact page...
+    </h1>
+
+    <form method="post" > {% csrf_token %}
+{#        <input type="text" name="uname">#}
+{#        <input type="email" name="email">#}
+{#        <textarea name="content"></textarea>#}
+
+        {{ form.as_p }}
+        <button type="submit">Send</button>
+    </form>
+{% endblock %}

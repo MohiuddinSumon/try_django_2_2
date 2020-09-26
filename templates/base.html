@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <title>
+        {% block head_title %}
+            Replaceable Title of the base
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <h1>
+        Platform Adding System:
+    </h1>
+    <h3>
+        This is passed context variable = {{ title }}
+    </h3>
+    <div id = "userDiv">
+
+    </div>
+
+    {% block content %}
+        This value will Be Changed
+    {% endblock %}
+
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+{#    <script>#}
+{#    const query = `#}
+{#  query {#}
+{#  customers(first: 10){#}
+{#    edges{#}
+{#      node{#}
+{#        firstName#}
+{#        lastName#}
+{#        dateJoined#}
+{#        lastLogin#}
+{#      }#}
+{#    }#}
+{#  }#}
+{#}#}
+{#`;#}
+{##}
+{#const url = "http://localhost:8000/graphql/";#}
+{#const opts = {#}
+{#  method: "POST",#}
+{#  headers: { "Content-Type": "application/json",   "Authorization" : "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1vaGl1ZGRpbkBiZGlwby5jb20iLCJleHAiOjE1OTU4NjMyNDQsIm9yaWdJYXQiOjE1OTU4NjI5NDQsInVzZXJfaWQiOiJWWE5sY2pveU5BPT0iLCJpc19zdGFmZiI6dHJ1ZSwiaXNfc3VwZXJ1c2VyIjp0cnVlfQ.LSGTwDOM_qB74NZ0-UW8hVlnWoBGFrL3bfzMSVCft-4"},#}
+{#  body: JSON.stringify({ query })#}
+{#};#}
+{##}
+{#fetch(url,opts)#}
+{#    .then(function(response) { return response.json(); })#}
+{#    .then(function(responseObject) {#}
+{#        te = JSON.stringify(responseObject)#}
+        {#st = te[data]#}
+{#        console.log(te);#}
+{#        alert(JSON.stringify(responseObject))#}
+{##}
+{#          var node = document.createElement("P");#}
+{##}
+{#          users = ""#}
+{##}
+{#        for(let i=0;i<responseObject.data.customers.edges.length;i++) {#}
+{#            u = `#}
+{#              Customer First Name: ${responseObject.data.customers.edges[i].node.firstName} |#}
+{#              Customer Last Name: ${responseObject.data.customers.edges[i].node.lastName} |#}
+{#              Customer Joined Date: ${responseObject.data.customers.edges[i].node.dateJoined} |#}
+{#            `#}
+            {#alert(u)#}
+{#            users += u#}
+{#            var textnode = document.createTextNode(u);#}
+{#            node.appendChild(textnode);#}
+{#            document.getElementById("userDiv").append(node);#}
+{#        }#}
+{##}
+        {#alert(users)#}
+          {#var textnode = document.createTextNode(users);#}
+          {#node.appendChild(textnode);#}
+          {#document.getElementById("userDiv").append(node);#}
+{#     })#}
+{#     .then(function(){#}
+{##}
+        {#console.log("print 2 "+te);#}
+{#     });#}
+{##}
+{#</script>#}

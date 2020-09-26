@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+
+    {% for Object in object_list %}
+        <ol>
+            <li> Title = {{ Object.title }}</li>
+            <li> Content = {{ Object.content }}</li>
+        </ol>
+    {% endfor %}
+
+{% endblock %}

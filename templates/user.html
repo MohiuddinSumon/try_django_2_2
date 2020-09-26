@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block head_title%}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>Current User is = {{ user }}</h1>
+    User is_authenticated = {{ user.is_authenticated }}
+
+    <p>The following list will be visible only if user is logged in</p>
+    {% for foo in my_list %}
+        <li>{{ foo }}</li>
+    {% endfor %}
+
+
+
+
+{% endblock %}
