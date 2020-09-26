@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.http import Http404
 from .models import BlogPost
 from .forms import BlogPostForm, BlogPostModelForm
@@ -35,6 +37,9 @@ def blog_post_list_view(request):
     return render(request, template_name, context)
 
 
+# @login_required(login_url='/login') or we could set LOGIN_URL in setting
+# @login_required
+@staff_member_required
 def blog_post_create_view(request):
     title = "Blog Create"
     template_name = "blog/create.html"
@@ -67,7 +72,6 @@ def blog_post_create_view(request):
 
 
 def blog_post_create_model_view(request):
-
     print(request.POST)
     form = BlogPostModelForm(request.POST or None)
 
@@ -91,6 +95,7 @@ def blog_post_create_model_view(request):
     }
     return render(request, template_name, context)
 
+
 def blog_post_retrieve_view(request, slug):
     # 1 object -> detail view
     title = "Blog Detail"
@@ -105,13 +110,18 @@ def blog_post_retrieve_view(request, slug):
 
 
 def blog_post_update_view(request, slug):
-    title = "Blog Update"
-    template_name = 'blog/update.html'
-    try:
-        obj = BlogPost.objects.get(slug=slug)
-    except BlogPost.DoesNotExist:
-        raise Http404
-    context = {"Object": obj, "method": "Slug", 'form': None, "title": title}
+    # template_name = 'blog/update.html'
+
+    template_name = 'blog/create.html'
+    obj = get_object_or_404(BlogPost, slug=slug)
+    form = BlogPostModelForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
+    # try:
+    #     obj = BlogPost.objects.get(slug=slug)
+    # except BlogPost.DoesNotExist:
+    #     raise Http404
+    context = {"Object": obj, "method": "Slug", 'form': form, "title": f"Title = {obj.title}"}
     print("Django Says", request.method, request.path, request.user)
     return render(request, template_name, context)
 
